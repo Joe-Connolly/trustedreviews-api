@@ -13,13 +13,4 @@ router.route('/posts')
   .post(Posts.createPost)
   .get(Posts.getPosts);
 
-router.route('/posts/:id')
-  .get(Posts.getPost)
-  .put(Posts.updatePost)
-  .delete(Posts.deletePost);
-
-router.route('/posts/search/:query')
-  .get(Posts.searchPosts);
-
-
 export default router;

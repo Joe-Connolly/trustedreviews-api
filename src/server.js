@@ -4,7 +4,7 @@ import cors from 'cors';
 import path from 'path';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
-//at top of server.js
+// at top of server.js
 import apiRouter from './router';
 
 // DB Setup
@@ -40,7 +40,7 @@ app.use('/api', apiRouter);
 
 // default index route
 app.get('/', (req, res) => {
-  res.send('hi');
+  res.send('Hello World!');
 });
 
 // START THE SERVER

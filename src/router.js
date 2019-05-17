@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import * as Reviews from './controllers/review_controller';
+import * as Products from './controllers/product_controller';
 
 
 const router = Router();
@@ -13,4 +14,7 @@ router.route('/reviews')
   .post(Reviews.createReview)
   .get(Reviews.getReviews);
 
+router.route('/products')
+  .post(Products.createProduct)
+  .get(Products.getProducts);
 export default router;

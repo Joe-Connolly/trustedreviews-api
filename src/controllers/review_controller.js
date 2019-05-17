@@ -1,17 +1,17 @@
-import Post from '../models/review_model';
+import Review from '../models/review_model';
 
 const { ObjectId } = require('mongoose').Types;
 
 export const createReview = (req, res) => {
-  const post = new Post();
-  post.title = req.body.title;
-  post.content = req.body.content;
-  post.tags = req.body.tags;
-  post.cover_url = req.body.cover_url;
-  console.log('createPost controller');
-  post.save()
+  const review = new Review();
+  review.title = req.body.title;
+  review.content = req.body.content;
+  review.tags = req.body.tags;
+  review.cover_url = req.body.cover_url;
+  console.log('createReview controller');
+  review.save()
     .then((result) => {
-      res.json({ message: 'Post created!' });
+      res.json({ message: 'Review created!' });
     })
     .catch((error) => {
       res.status(500).json({ error });
@@ -19,8 +19,8 @@ export const createReview = (req, res) => {
 };
 
 export const getReviews = (req, res) => {
-  console.log('getPost controller');
-  Post.find({})
+  console.log('getReview controller');
+  Review.find({})
     .then((result) => {
       res.json(result);
     })

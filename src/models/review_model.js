@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 
 
-const PostSchema = new Schema({
+const ReviewSchema = new Schema({
   title: String,
   cover_url: String,
   content: String,
@@ -12,6 +12,6 @@ const PostSchema = new Schema({
   },
 });
 
-PostSchema.index({ title: 'text', content: 'text' }, { name: 'search' });
-const PostModel = mongoose.model('Post', PostSchema);
-export default PostModel;
+ReviewSchema.index({ title: 'text', content: 'text' }, { name: 'search' });
+const ReviewModel = mongoose.model('Review', ReviewSchema);
+export default ReviewModel;

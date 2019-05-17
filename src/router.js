@@ -6,7 +6,7 @@ import * as Products from './controllers/product_controller';
 const router = Router();
 
 router.get('/', (req, res) => {
-  res.json({ message: 'welcome to our products api!' });
+  res.json({ message: 'welcome to our query products api!' });
 });
 
 // /your routes will go here

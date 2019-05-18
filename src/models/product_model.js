@@ -7,11 +7,13 @@ const ProductSchema = new Schema({
   rating: String,
   numReviews: String,
   description: String,
+  reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
 }, {
   toJSON: {
     virtuals: true,
   },
 });
+
 
 ProductSchema.index({ title: 'text', content: 'text' }, { name: 'search' });
 const ProductModel = mongoose.model('Product', ProductSchema);

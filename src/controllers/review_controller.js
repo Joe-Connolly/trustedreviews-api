@@ -1,16 +1,25 @@
 import Review from '../models/review_model';
+import Product from '../models/product_model';
 
 const { ObjectId } = require('mongoose').Types;
 
 export const createReview = (req, res) => {
   const review = new Review();
-  review.title = req.body.title;
-  review.content = req.body.content;
-  review.tags = req.body.tags;
-  review.cover_url = req.body.cover_url;
+  review.username = req.body.username;
+  review.rating = req.body.rating;
+  review.body = req.body.body;
+  review.product = req.body.product;
   console.log('createReview controller');
   review.save()
     .then((result) => {
+      Product.findOne({ _id: new ObjectId(review.product) }, (err, product) => {
+        if (product) {
+          product.reviews.push(review);
+          // var date = new Date().toISOString();
+          // user.visitLog.push(date);
+          product.save();
+        }
+      });
       res.json({ message: 'Review created!' });
     })
     .catch((error) => {

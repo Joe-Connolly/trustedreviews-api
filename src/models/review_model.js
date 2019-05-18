@@ -2,10 +2,10 @@ import mongoose, { Schema } from 'mongoose';
 
 
 const ReviewSchema = new Schema({
-  title: String,
-  cover_url: String,
-  content: String,
-  tags: String,
+  body: String,
+  username: String,
+  rating: Number,
+  product: { type: Schema.Types.ObjectId, ref: 'Product' },
 }, {
   toJSON: {
     virtuals: true,

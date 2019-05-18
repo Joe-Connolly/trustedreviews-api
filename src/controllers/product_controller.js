@@ -1,6 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import Product from '../models/product_model';
 
+const { ObjectId } = require('mongoose').Types;
+
 
 export const createProduct = (req, res) => {
   const product = new Product();
@@ -24,6 +26,18 @@ export const createProduct = (req, res) => {
 export const getProducts = (req, res) => {
   console.log('getProduct controller');
   Product.find({})
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((error) => {
+      res.status(500).json({ error });
+    });
+};
+
+export const getProduct = (req, res) => {
+  console.log('getProduct controller');
+  Product.findOne({ _id: new ObjectId(req.params.id) })
+    .populate('author', 'email')
     .then((result) => {
       res.json(result);
     })

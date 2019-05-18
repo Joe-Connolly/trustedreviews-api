@@ -17,4 +17,8 @@ router.route('/reviews')
 router.route('/products')
   .post(Products.createProduct)
   .get(Products.getProducts);
+
+router.route('/products/:id')
+  .get(Products.getProduct);
+
 export default router;

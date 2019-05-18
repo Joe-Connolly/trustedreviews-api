@@ -5,6 +5,12 @@ import Product from '../models/product_model';
 export const createProduct = (req, res) => {
   const product = new Product();
   product.title = req.body.title;
+  product.imageURL = req.body.imageURL;
+  product.company = req.body.company;
+  product.rating = req.body.rating;
+  product.numReviews = req.body.numReviews;
+  product.description = req.body.description;
+
   console.log('createProduct controller');
   product.save()
     .then((result) => {

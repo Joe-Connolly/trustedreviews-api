@@ -15,8 +15,6 @@ export const createReview = (req, res) => {
       Product.findOne({ _id: new ObjectId(review.product) }, (err, product) => {
         if (product) {
           product.reviews.push(review);
-          // var date = new Date().toISOString();
-          // user.visitLog.push(date);
           product.save();
         }
       });

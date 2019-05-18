@@ -3,8 +3,10 @@ import mongoose, { Schema } from 'mongoose';
 const ProductSchema = new Schema({
   title: String,
   imageURL: String,
+  company: String,
   rating: String,
   numReviews: String,
+  description: String,
 }, {
   toJSON: {
     virtuals: true,

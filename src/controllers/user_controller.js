@@ -3,6 +3,7 @@
 // import dotenv from 'dotenv';
 // import User from '../models/user_model';
 import Product from '../models/product_model';
+import User from '../models/user_model';
 
 const { ObjectId } = require('mongoose').Types;
 
@@ -59,10 +60,23 @@ const { ObjectId } = require('mongoose').Types;
 //   return jwt.encode({ sub: user.id, iat: timestamp }, process.env.AUTH_SECRET);
 // }
 
+export const createUser = (req, res) => {
+  const user = new User();
+  user.reputation = req.body.reputation;
+  user.username = req.body.username;
+  user.save()
+    .then((result) => {
+      res.json({ message: 'User created!' });
+    })
+    .catch((error) => {
+      res.status(500).json({ error });
+    });
+};
+
 
 export const getUser = (req, res) => {
   console.log('getProduct controller');
-  Product.findOne({ _id: new ObjectId(req.params.id) })
+  User.findOne({ _id: new ObjectId(req.params.id) })
     .populate('reviews')
     .then((result) => {
       res.json(result);

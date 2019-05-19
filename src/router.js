@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import * as Reviews from './controllers/review_controller';
 import * as Products from './controllers/product_controller';
+import * as Users from './controllers/user_controller';
 
 
 const router = Router();
@@ -20,5 +21,11 @@ router.route('/products')
 
 router.route('/products/:id')
   .get(Products.getProduct);
+
+router.route('/users')
+  .post(Users.createUser);
+
+router.route('/users/:id')
+  .get(Users.getUser);
 
 export default router;

@@ -77,7 +77,7 @@ export const createUser = (req, res) => {
 export const getUser = (req, res) => {
   console.log('getProduct controller');
   User.findOne({ username: req.params.username })
-    .populate('reviews')
+    .populate({ path: 'reviews', populate: { path: 'product' } })
     .then((result) => {
       res.json(result);
     })

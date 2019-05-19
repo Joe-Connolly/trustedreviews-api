@@ -66,7 +66,7 @@ export const createUser = (req, res) => {
   user.username = req.body.username;
   user.save()
     .then((result) => {
-      res.json({ message: 'User created!' });
+      res.json({ message: 'User created!', result });
     })
     .catch((error) => {
       res.status(500).json({ error });

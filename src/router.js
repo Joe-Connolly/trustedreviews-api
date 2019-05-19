@@ -25,7 +25,7 @@ router.route('/products/:id')
 router.route('/users')
   .post(Users.createUser);
 
-router.route('/users/:id')
+router.route('/users/:username')
   .get(Users.getUser);
 
 export default router;

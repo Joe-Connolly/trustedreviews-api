@@ -10,7 +10,7 @@ const UserSchema = new Schema({
     virtuals: true,
   },
 });
-
+// TODO add index for username
 UserSchema.index({ title: 'text', content: 'text' }, { name: 'search' });
 const UserModel = mongoose.model('User', UserSchema);
 export default UserModel;

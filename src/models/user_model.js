@@ -3,7 +3,8 @@ import mongoose, { Schema } from 'mongoose';
 
 const UserSchema = new Schema({
   reputation: String,
-  username: String,
+  email: { type: String, required: true, unique: true },
+  username: { type: String, required: true, unique: true },
   reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
 }, {
   toJSON: {

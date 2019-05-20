@@ -64,6 +64,8 @@ export const createUser = (req, res) => {
   const user = new User();
   user.reputation = req.body.reputation;
   user.username = req.body.username;
+  user.email = req.body.email;
+  console.log('email unique');
   user.save()
     .then((result) => {
       res.json({ message: 'User created!', result });

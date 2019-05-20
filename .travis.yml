@@ -8,4 +8,4 @@ deploy:
   provider: heroku
   app: trusted-reviews
   api_key: HEROKU_KEY
-  on: ./dist
+  project: ./dist/

@@ -7,5 +7,7 @@ install:
 deploy:
   provider: heroku
   app: trusted-reviews
-  api_key: HEROKU_KEY
-  project: ./dist/
+  api_key: 
+    secure: "KUMLAE7KdMSscOXDCCkS1kj6sFlQzsjEwtV0yiSW0EB37lGUOeY07RVQYt9BEMwoGHnHv/ZPgpQynHa/YAVoVAvge9N4WC7Yq2vF0tRp3fO7YZeHrlCsNHGxTG3a2q5ADN6uOEHoNQLarMVrD1XM7cQswjjdq+fl3GcED9sTQ99aMhbOnysXqOXSOzr/c6DcjNcbto+RGvE9bbvqJpjFlmJsPDgimSTdqoMvy8N2uQTdZkJy3lxbvIY4DCTw6ObzdU3ZBOmUip9HAaBjWhTqUpxFMD1Hkn8YDVEi05JHEkLUcuWJdp+wFst6SGNrMqpN4bvhb2jJUPN7KVyapk02slnzEUPpncwK6iBEJM6G99z99W/LmNuviMp7R73IWoanP3aEAFXrTm9Gxoszm3LXMjZ1oYw5UiapNeQOe+YItpWzxJ5q1le0p0oZMQQxw7luEr+Hp29BOGjpnRCXrf9tuxEKRNCqxH5onr7Ug53vlPbixe7NmEmFoZGH7IWfG6el/oZqfZNJK1/9WY+tR9rps4jPcIsNSPNT+t7crlaj/kSi/GMeE43EbL40oQVW3hLfWzD/zt7pnoBEBohugCNiofPJ3IQGgnIw3AUO7e1ykYfOC/IKNJj68F3UZnAvGuMvdj9l4vtnGVh98+NHJ6RZZsz4ST9XdAyTv0GEchhuXYY="
+  on: 
+    repo: dartmouth-cs52-19S/project-api-trustedreviews/edit/master

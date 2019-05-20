@@ -3,3 +3,7 @@ node_js:
   - "11"
 install:
   - yarn --ignore-engines
+  - yarn build
+deploy:
+  provider: heroku
+  app: trusted-reviews

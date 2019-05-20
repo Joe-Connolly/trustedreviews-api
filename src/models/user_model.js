@@ -3,6 +3,7 @@ import mongoose, { Schema } from 'mongoose';
 
 const UserSchema = new Schema({
   reputation: String,
+  email: { type: String, unique: true },
   username: { type: String, unique: true },
   reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
 }, {

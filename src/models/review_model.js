@@ -4,7 +4,7 @@ import mongoose, { Schema } from 'mongoose';
 const ReviewSchema = new Schema({
   body: String,
   username: String,
-  rating: Number,
+  rating: Number, // limit user to one vote, updevote, downvotes
   product: { type: Schema.Types.ObjectId, ref: 'Product' },
 }, {
   toJSON: {

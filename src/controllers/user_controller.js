@@ -87,3 +87,15 @@ export const getUser = (req, res) => {
       res.status(500).json({ error });
     });
 };
+
+// export const getUsers = (req, res) => {
+//   console.log('getProduct controller');
+//   User.find({})
+//     .populate({ path: 'reviews', populate: { path: 'product' } })
+//     .then((result) => {
+//       res.json(result);
+//     })
+//     .catch((error) => {
+//       res.status(500).json({ error });
+//     });
+// };

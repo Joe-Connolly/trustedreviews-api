@@ -10,7 +10,6 @@ export const createReview = (req, res) => {
   review.rating = req.body.rating;
   review.body = req.body.body;
   review.product = req.body.product;
-  console.log('createReview controller');
   review.save()
     .then((result) => {
       Product.findOne({ _id: new ObjectId(review.product) }, (err, product) => {
@@ -21,7 +20,6 @@ export const createReview = (req, res) => {
             if (user) {
               user.reviews.push(review);
               user.save();
-              console.log('saves');
               res.json({ message: 'Review created!' });
             }
           });
@@ -34,7 +32,6 @@ export const createReview = (req, res) => {
 };
 
 export const getReviews = (req, res) => {
-  console.log('getReview controller');
   Review.find({})
     .populate('product')
     .then((result) => {

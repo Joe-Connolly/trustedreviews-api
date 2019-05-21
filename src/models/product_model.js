@@ -19,4 +19,3 @@ const ProductSchema = new Schema({
 ProductSchema.index({ title: 'text', content: 'text' }, { name: 'search' });
 const ProductModel = mongoose.model('Product', ProductSchema);
 export default ProductModel;
-// title, image_url, rating, numReviews, product_link

@@ -12,8 +12,6 @@ export const createProduct = (req, res) => {
   product.rating = req.body.rating;
   product.numReviews = req.body.numReviews;
   product.description = req.body.description;
-
-  console.log('createProduct controller');
   product.save()
     .then((result) => {
       res.json({ message: 'Product created!' });
@@ -36,7 +34,6 @@ export const getProducts = (req, res) => {
 };
 
 export const getProduct = (req, res) => {
-  console.log('getProduct controller');
   Product.findOne({ _id: new ObjectId(req.params.id) })
     .populate('reviews')
     .then((result) => {

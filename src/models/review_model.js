@@ -5,7 +5,7 @@ const voting = require('mongoose-voting');
 const ReviewSchema = new Schema({
   body: String,
   username: String,
-  rating: Number, // limit user to one vote, updevote, downvotes
+  rating: Number,
   product: { type: Schema.Types.ObjectId, ref: 'Product' },
 }, {
   toJSON: {

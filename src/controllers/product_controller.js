@@ -22,13 +22,14 @@ export const createProduct = (req, res) => {
 };
 
 export const getProducts = (req, res) => {
-  console.log('getProduct controller');
+  console.log('get all Products controller');
   Product.find({})
     .populate('reviews')
     .then((result) => {
       res.json(result);
     })
     .catch((error) => {
+      console.log(error);
       res.status(500).json({ error });
     });
 };
@@ -40,6 +41,7 @@ export const getProduct = (req, res) => {
       res.json(result);
     })
     .catch((error) => {
+      console.log(error);
       res.status(500).json({ error });
     });
 };

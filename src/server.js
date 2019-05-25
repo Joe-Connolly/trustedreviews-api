@@ -4,7 +4,6 @@ import cors from 'cors';
 import path from 'path';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
-// at top of server.js
 import apiRouter from './router';
 
 // DB Setup

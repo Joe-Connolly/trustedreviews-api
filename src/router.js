@@ -2,11 +2,9 @@ import { Router } from 'express';
 import * as Reviews from './controllers/review_controller';
 import * as Products from './controllers/product_controller';
 import * as Users from './controllers/user_controller';
-import { requireSignIn } from './services/passport';
-
+import { requireAuth, requireSignIn } from './services/passport';
 
 const router = Router();
-
 
 router.get('/', (req, res) => {
   res.json({ message: 'welcome to our query products 2!' });
@@ -14,11 +12,11 @@ router.get('/', (req, res) => {
 
 // /your routes will go here
 router.route('/reviews')
-  .post(Reviews.createReview)
+  .post(requireAuth, Reviews.createReview)
   .get(Reviews.getReviews);
 
 router.route('/products')
-  .post(Products.createProduct)
+  .post(requireAuth, Products.createProduct)
   .get(Products.getProducts);
 
 router.route('/products/:id')
@@ -30,7 +28,8 @@ router.route('/users')
 router.route('/users/:username')
   .get(Users.getUser);
 
-router.get('/login', requireSignIn);
+router.get('/signin', requireSignIn, Users.signin);
+router.get('/signup', Users.signup);
 
 router.get('/login/cb', (req, res) => {
   res.send('Logged in!');

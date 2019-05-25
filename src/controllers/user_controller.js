@@ -18,7 +18,7 @@ export const signup = (req, res, next) => {
     res.status(412).send('You must provide a username, email, and password');
   }
 
-  User.findOne({ email })
+  User.findOne({ username })
     .then((result) => {
       if (!result) {
         const user = new User();
@@ -27,7 +27,7 @@ export const signup = (req, res, next) => {
         user.username = username;
         user.save()
           .then(() => {
-            res.status(201).send('New account created');
+            res.send({ token: tokenForUser(user) });
           })
           .catch((error) => {
             res.status(500).json({ error });
@@ -40,35 +40,6 @@ export const signup = (req, res, next) => {
       res.status(500).json({ error });
     });
 };
-
-/* is this a general mongo function? */
-// export const findOrCreate = (req, res) => {
-//   const { googleID } = req.body.profile;
-//   const { username } = req.body.profile.displayName;
-//   const { email } = req.body.profile.emails;
-
-//   User.findOne({ googleID: req.body.profile.id })
-//     .then((result) => {
-//       if (!result) {
-//         const user = new User();
-//         user.googleID = googleID;
-//         user.username = username;
-//         user.email = email;
-//         user.save()
-//           .then(() => {
-//             res.send({ token: tokenForUser(user) });
-//           })
-//           .catch((error) => {
-//             res.status(500).json({ error });
-//           });
-//       } else {
-//         res.send(result);
-//       }
-//     })
-//     .catch((error) => {
-//       res.status(500).json({ error });
-//     });
-// };
 
 export const createUser = (req, res) => {
   const user = new User();

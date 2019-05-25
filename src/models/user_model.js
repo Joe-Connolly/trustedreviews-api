@@ -7,7 +7,6 @@ const UserSchema = new Schema({
   email: { type: String, required: true, unique: true },
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  // googleID: { type: String, required: true, unique: true },
   reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
 }, {
   toJSON: {

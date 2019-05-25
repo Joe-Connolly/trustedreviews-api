@@ -28,11 +28,7 @@ router.route('/users')
 router.route('/users/:username')
   .get(Users.getUser);
 
-router.get('/signin', requireSignIn, Users.signin);
-router.get('/signup', Users.signup);
-
-router.get('/login/cb', (req, res) => {
-  res.send('Logged in!');
-});
+router.post('/signin', requireSignIn, Users.signin);
+router.post('/signup', Users.signup);
 
 export default router;

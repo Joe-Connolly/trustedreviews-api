@@ -13,8 +13,8 @@ const UserSchema = new Schema({
 });
 
 
-UserSchema.virtual('score').get(function () {
-  return ((this.reviews || []).length) * 10;
+UserSchema.virtual('numReviews').get(function () {
+  return (this.reviews || []).length;
 });
 
 const UserModel = mongoose.model('User', UserSchema);

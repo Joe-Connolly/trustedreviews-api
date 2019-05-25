@@ -19,9 +19,6 @@ ProductSchema.virtual('numReviews').get(function () {
 });
 
 ProductSchema.virtual('rating').get(function () {
-  console.log('rating');
-  console.log(this.ratingSum);
-  console.log(this.reviews);
   return (this.ratingSum / (this.reviews.length || 1.0)).toFixed(1);
 });
 

@@ -6,7 +6,6 @@ import User from '../models/user_model';
 const { ObjectId } = require('mongoose').Types;
 
 export const createReview = (req, res) => {
-  console.log('top of new review controller');
   const review = new Review();
   review.username = req.body.username;
   review.rating = req.body.rating;
@@ -19,7 +18,6 @@ export const createReview = (req, res) => {
         let userAlreadyReviewed = false;
         // check if user already reviewed the same product
         user.reviews.map((pastReview) => {
-          console.log(`${pastReview.product}  ${review.product}  ${pastReview.product.equals(review.product)}`);
           if (pastReview.product.equals(review.product)) {
             userAlreadyReviewed = true;
           }
@@ -35,9 +33,7 @@ export const createReview = (req, res) => {
       return Product.findOne({ _id: new ObjectId(review.product) });
     })
     .then((product) => {
-      console.log('looking for product');
       if (product) {
-        console.log('found product');
         product.reviews.push(review);
         product.ratingSum += review.rating;
         product.save();

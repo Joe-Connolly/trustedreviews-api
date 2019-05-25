@@ -3,6 +3,17 @@ import Product from '../models/product_model';
 
 const { ObjectId } = require('mongoose').Types;
 
+// helper method for getProducts and searchProducts
+const getAllProducts = (res) => {
+  Product.find({})
+    .populate('reviews')
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((error) => {
+      res.status(500).json({ error });
+    });
+};
 
 export const createProduct = (req, res) => {
   const product = new Product();
@@ -22,15 +33,7 @@ export const createProduct = (req, res) => {
 };
 
 export const getProducts = (req, res) => {
-  console.log('getProduct controller');
-  Product.find({})
-    .populate('reviews')
-    .then((result) => {
-      res.json(result);
-    })
-    .catch((error) => {
-      res.status(500).json({ error });
-    });
+  getAllProducts(res);
 };
 
 export const getProduct = (req, res) => {
@@ -42,4 +45,20 @@ export const getProduct = (req, res) => {
     .catch((error) => {
       res.status(500).json({ error });
     });
+};
+
+export const searchProducts = (req, res) => {
+  const { searchTerm } = req.query;
+  if (searchTerm === '') {
+    getAllProducts(res);
+  } else {
+    Product.find({ $text: { $search: searchTerm } })
+      .populate('reviews')
+      .then((result) => {
+        res.json(result);
+      })
+      .catch((error) => {
+        res.status(500).json({ error });
+      });
+  }
 };

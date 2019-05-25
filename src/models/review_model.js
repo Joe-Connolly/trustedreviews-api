@@ -12,6 +12,5 @@ const ReviewSchema = new Schema({
   },
 });
 
-ReviewSchema.index({ title: 'text', content: 'text' }, { name: 'search' });
 const ReviewModel = mongoose.model('Review', ReviewSchema);
 export default ReviewModel;

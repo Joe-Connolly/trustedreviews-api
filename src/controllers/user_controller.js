@@ -19,10 +19,11 @@ export const createUser = (req, res) => {
 export const getUser = (req, res) => {
   User.findOne({ username: req.params.username })
     .populate({ path: 'reviews', populate: { path: 'product' } })
-    .then((result) => {
-      res.json(result);
+    .then((user) => {
+      res.json(user);
     })
     .catch((error) => {
+      console.log(error);
       res.status(500).json({ error });
     });
 };

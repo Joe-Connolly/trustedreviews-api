@@ -12,5 +12,10 @@ const UserSchema = new Schema({
   },
 });
 
+
+UserSchema.virtual('score').get(function () {
+  return ((this.reviews || []).length) * 10;
+});
+
 const UserModel = mongoose.model('User', UserSchema);
 export default UserModel;

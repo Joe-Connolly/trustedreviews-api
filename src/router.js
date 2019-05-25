@@ -22,6 +22,9 @@ router.route('/products')
   .post(Products.createProduct)
   .get(Products.getProducts);
 
+router.route('/products/search/')
+  .get(Products.searchProducts);
+
 router.route('/products/:id')
   .get(Products.getProduct);
 

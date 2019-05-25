@@ -16,6 +16,6 @@ const ProductSchema = new Schema({
 });
 
 
-ProductSchema.index({ title: 'text', content: 'text' }, { name: 'search' });
+ProductSchema.index({ title: 'text', company: 'text', description: 'text' }, { name: 'search' });
 const ProductModel = mongoose.model('Product', ProductSchema);
 export default ProductModel;

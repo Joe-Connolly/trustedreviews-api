@@ -15,9 +15,15 @@ router.route('/reviews')
   .post(requireAuth, Reviews.createReview)
   .get(Reviews.getReviews);
 
+router.route('/reviews/:voteType')
+  .put(Reviews.vote);
+
 router.route('/products')
   .post(requireAuth, Products.createProduct)
   .get(Products.getProducts);
+
+router.route('/products/search/')
+  .get(Products.searchProducts);
 
 router.route('/products/:id')
   .get(Products.getProduct);

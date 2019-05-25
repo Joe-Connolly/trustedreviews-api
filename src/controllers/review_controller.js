@@ -41,3 +41,33 @@ export const getReviews = (req, res) => {
       res.status(500).json({ error });
     });
 };
+
+export const vote = (req, res) => {
+  const { voteType } = req.params;
+  const { username } = req.body;
+  const { reviewID } = req.body;
+  let user;
+  let review;
+  User.findOne({ username }).then((result) => {
+    user = result;
+    return Review.findOne({ _id: new ObjectId(reviewID) });
+  })
+    .then((result) => {
+      review = result;
+      if (voteType === 'upvote') {
+        review.upvote(user);
+      } else if (voteType === 'downvote') {
+        review.downvote(user);
+      }
+      review.save();
+      return Product.findOne({ _id: new ObjectId(review.product) })
+        .populate('reviews');
+    })
+    .then((product) => {
+      res.json({ product });
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json({ error });
+    });
+};

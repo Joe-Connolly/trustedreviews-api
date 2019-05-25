@@ -1,5 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 
+const voting = require('mongoose-voting');
 
 const ReviewSchema = new Schema({
   body: String,
@@ -12,5 +13,16 @@ const ReviewSchema = new Schema({
   },
 });
 
+ReviewSchema.plugin(voting);
+
+ReviewSchema.virtual('numUpvotes').get(function () {
+  return this.vote.positive.length;
+});
+
+ReviewSchema.virtual('numDownvotes').get(function () {
+  return this.vote.negative.length;
+});
+
+ReviewSchema.index({ title: 'text', content: 'text' }, { name: 'search' });
 const ReviewModel = mongoose.model('Review', ReviewSchema);
 export default ReviewModel;

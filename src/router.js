@@ -15,6 +15,9 @@ router.route('/reviews')
   .post(Reviews.createReview)
   .get(Reviews.getReviews);
 
+router.route('/reviews/:voteType')
+  .put(Reviews.vote);
+
 router.route('/products')
   .post(Products.createProduct)
   .get(Products.getProducts);

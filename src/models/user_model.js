@@ -14,6 +14,11 @@ const UserSchema = new Schema({
   },
 });
 
+
+UserSchema.virtual('numReviews').get(function () {
+  return (this.reviews || []).length;
+});
+
 UserSchema.pre('save', function beforeUserSave(next) {
   const user = this;
   if (!user.isModified('password')) return next();

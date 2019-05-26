@@ -2,7 +2,7 @@ import { Router } from 'express';
 import * as Reviews from './controllers/review_controller';
 import * as Products from './controllers/product_controller';
 import * as Users from './controllers/user_controller';
-
+import { requireAuth, requireSignIn } from './services/passport';
 
 const router = Router();
 
@@ -12,14 +12,14 @@ router.get('/', (req, res) => {
 
 // /your routes will go here
 router.route('/reviews')
-  .post(Reviews.createReview)
+  .post(requireAuth, Reviews.createReview)
   .get(Reviews.getReviews);
 
 router.route('/reviews/:voteType')
   .put(Reviews.vote);
 
 router.route('/products')
-  .post(Products.createProduct)
+  .post(requireAuth, Products.createProduct)
   .get(Products.getProducts);
 
 router.route('/products/search/')
@@ -33,5 +33,8 @@ router.route('/users')
 
 router.route('/users/:username')
   .get(Users.getUser);
+
+router.post('/signin', requireSignIn, Users.signin);
+router.post('/signup', Users.signup);
 
 export default router;

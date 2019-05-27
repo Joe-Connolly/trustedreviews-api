@@ -5,7 +5,7 @@ import User from '../models/user_model';
 dotenv.config({ silent: true });
 
 export const signin = (req, res, next) => {
-  res.send({ token: tokenForUser(req.user) });
+  res.send({ token: tokenForUser(req.user), username: req.user.username });
 };
 
 export const signup = (req, res, next) => {
@@ -27,7 +27,7 @@ export const signup = (req, res, next) => {
         user.username = username;
         user.save()
           .then(() => {
-            res.send({ token: tokenForUser(user) });
+            res.send({ token: tokenForUser(user), username: req.user.username });
           })
           .catch((error) => {
             res.status(500).json({ error });

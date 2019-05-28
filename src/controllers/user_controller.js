@@ -27,9 +27,10 @@ export const signup = (req, res, next) => {
         user.username = username;
         user.save()
           .then(() => {
-            res.send({ token: tokenForUser(user), username: req.user.username });
+            res.send({ token: tokenForUser(user), username });
           })
           .catch((error) => {
+            console.log(error);
             res.status(500).json({ error });
           });
       } else {
@@ -37,6 +38,7 @@ export const signup = (req, res, next) => {
       }
     })
     .catch((error) => {
+      console.log(error);
       res.status(500).json({ error });
     });
 };

@@ -7,7 +7,7 @@ const { ObjectId } = require('mongoose').Types;
 
 export const createReview = (req, res) => {
   const review = new Review();
-  review.username = req.body.username;
+  const { username } = req.user;
   review.rating = req.body.rating;
   review.body = req.body.body;
   review.product = req.body.product;

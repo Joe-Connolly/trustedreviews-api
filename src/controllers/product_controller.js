@@ -34,6 +34,7 @@ export const createProduct = (req, res) => {
 
 export const getProducts = (req, res) => {
   getAllProducts(res);
+  console.log('test');
 };
 
 export const getProduct = (req, res) => {

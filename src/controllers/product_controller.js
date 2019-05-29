@@ -17,11 +17,11 @@ const getAllProducts = (res) => {
 
 export const createProduct = (req, res) => {
   const product = new Product();
+  console.log('body', req.body);
   product.title = req.body.title;
   product.imageURL = req.body.imageURL;
+  product.URL = req.body.url;
   product.company = req.body.company;
-  product.rating = req.body.rating;
-  product.numReviews = req.body.numReviews;
   product.description = req.body.description;
   product.save()
     .then((result) => {

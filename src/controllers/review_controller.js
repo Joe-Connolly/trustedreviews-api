@@ -62,10 +62,13 @@ export const getReviews = (req, res) => {
 
 export const vote = (req, res) => {
   const { voteType } = req.params;
-  const { username } = req.body;
+  const { username } = req.user;
   const { reviewID } = req.body;
   let user;
   let review;
+  // console.log('params:', req.params);
+  // console.log('body:', req.body);
+  // console.log('req.user:', req.user);
   User.findOne({ username }).then((result) => {
     user = result;
     return Review.findOne({ _id: new ObjectId(reviewID) });
@@ -77,6 +80,7 @@ export const vote = (req, res) => {
       } else if (voteType === 'downvote') {
         review.downvote(user);
       }
+      console.log('review has been voted', review);
       review.save();
       return Product.findOne({ _id: new ObjectId(review.product) })
         .populate('reviews');

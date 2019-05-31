@@ -1,30 +1,31 @@
 # API Server for Trusted Reviews
 
-To be done later:
-![Team Photo](Insert a Team Photo URL here)
-[*how?*](https://help.github.com/articles/about-readmes/#relative-links-and-image-paths-in-readme-files)
-
-See frontend repo for the main README.  The README below just contains backend related information:
+See frontend repo for the main README that containes team details and photos. The README below just contains backend related information:
 
 ## Architecture
 
 * ExpressJS backend framework
 * Mongoose for Object Relational Mapping (ORM)
 * MongoDB for database
+* Yarn for package management
+* PassportJS for authentication
 
-## Setup
+# Setup
 
 * Clone repo
-* Run `yarn`
-* Run `yarn start`
+* Navigate to root directory of repo
+* Run `yarn` to install dependencies
+* Run `yarn start` to run the app
 
 ## Deployment
 
-* Create a project on heroku
-* Follow instructions on using heroku git:
-    * `git remote add heroku heroku-git-url`
-    * commit changes
-    * `git push heroku master`
+* Create a project on Heroku
+* Follow Heroku instructions on deploying an app using Heroku git: https://devcenter.heroku.com/articles/git
+    *  Navigate to root directory of repo
+    *  Install Heroku CLI
+    * Run `git remote add heroku heroku-git-url`
+    * commit changes to your master branch
+    * Run `git push heroku master`
 
 ## Authors
 
@@ -34,4 +35,6 @@ See frontend repo for the main README.  The README below just contains backend r
 * Joe Connolly
 
 ## Acknowledgments
-* Tim Tregubov for helping make a great starter pack
+* Tim Tregubov for helping make a great starter pack. 
+* Tim and TAs for helping answer our questions.
+* The creators of mongoose-voting for making voting on reviews much easier to implement: https://www.npmjs.com/package/mongoose-voting

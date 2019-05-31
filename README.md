@@ -14,6 +14,10 @@ See frontend repo for the main README that containes team details and photos. Th
 
 * Clone repo
 * Navigate to root directory of repo
+* To setup PassportJS:
+    * Create a new .env file in the root directory
+    * In the file create a new variable `AUTH_SECRET` and set it equal to a new string (in doublequotes). This string can be anything, but should be relatively long (30+ characters).
+    * This secret will be used to generate Json Web Tokens used to authenticate users. Make sure that `.env` is included in your .gitignore file, so this will not be uploaded to git.
 * Run `yarn` to install dependencies
 * Run `yarn start` to run the app
 
@@ -21,11 +25,13 @@ See frontend repo for the main README that containes team details and photos. Th
 
 * Create a project on Heroku
 * Follow Heroku instructions on deploying an app using Heroku git: https://devcenter.heroku.com/articles/git
-    *  Navigate to root directory of repo
-    *  Install Heroku CLI
-    * Run `git remote add heroku heroku-git-url`
-    * commit changes to your master branch
-    * Run `git push heroku master`
+    * Under the 'settings' tab in your Heroku project, create a new Config Var named `AUTH_SECRET`.
+    * Set the value of `AUTH_SECRET` to a string, or use the string you chose for your .env file during setup.
+*  Navigate to root directory of repo
+*  Install Heroku CLI
+* Run `git remote add heroku heroku-git-url`
+* Commit changes to your master branch
+* Run `git push heroku master`
 
 ## Authors
 

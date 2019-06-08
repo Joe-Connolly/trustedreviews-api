@@ -1,33 +1,13 @@
 import { Router } from 'express';
-import * as Reviews from './controllers/review_controller';
-import * as Products from './controllers/product_controller';
-import * as Users from './controllers/user_controller';
-import { requireAuth, requireSignIn } from './services/passport';
+import * as Timeslots from './controllers/timeslots_controller';
 
 const router = Router();
 
 router.get('/', (req, res) => {
-  res.json({ message: 'welcome to our query products 2!' });
+  res.json({ message: 'welcome to our website!' });
 });
 
-// /your routes will go here
-router.route('/reviews')
-  .post(requireAuth, Reviews.createReview)
-  .get(Reviews.getReviews);
-
-router.route('/reviews/:voteType')
-  .put(requireAuth, Reviews.vote);
-
 router.route('/products')
-  .get(Products.getProducts);
-
-router.route('/users')
-  .post(Users.createUser);
-
-router.route('/users/:username')
-  .get(Users.getUser);
-
-router.post('/signin', requireSignIn, Users.signin);
-router.post('/signup', Users.signup);
+  .get(Timeslots.getTimeslots);
 
 export default router;

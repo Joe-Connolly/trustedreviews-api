@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
-import { getAllTimeSlots } from './timeSlotHelper';
+import { getAllTimeSlots } from '../services/timeSlotHelper';
 
-export const getProducts = (req, res) => {
+export const getTimeslots = (req, res) => {
   const slotLength = 60;
   // getAllProducts(res);
   let workingHours = [

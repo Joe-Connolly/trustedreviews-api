@@ -19,14 +19,7 @@ router.route('/reviews/:voteType')
   .put(requireAuth, Reviews.vote);
 
 router.route('/products')
-  .post(Products.createProduct)
   .get(Products.getProducts);
-
-router.route('/products/search/')
-  .get(Products.searchProducts);
-
-router.route('/products/:id')
-  .get(Products.getProduct);
 
 router.route('/users')
   .post(Users.createUser);

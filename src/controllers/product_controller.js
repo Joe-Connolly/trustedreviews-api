@@ -1,66 +1,30 @@
 /* eslint-disable import/prefer-default-export */
-import Product from '../models/product_model';
-
-const { ObjectId } = require('mongoose').Types;
-
-// helper method for getProducts and searchProducts
-const getAllProducts = (res) => {
-  Product.find({})
-    .populate('reviews')
-    .then((result) => {
-      res.json(result);
-    })
-    .catch((error) => {
-      res.status(500).json({ error });
-    });
-};
-
-export const createProduct = (req, res) => {
-  const product = new Product();
-  console.log('body', req.body);
-  product.title = req.body.title;
-  product.imageURL = req.body.imageURL;
-  product.URL = req.body.url;
-  product.company = req.body.company;
-  product.description = req.body.description;
-  product.save()
-    .then((result) => {
-      res.json({ message: 'Product created!' });
-    })
-    .catch((error) => {
-      res.status(500).json({ error });
-    });
-};
+import { getAllTimeSlots } from './timeSlotHelper';
 
 export const getProducts = (req, res) => {
-  getAllProducts(res);
-  console.log('test');
-};
+  const slotLength = 60;
+  // getAllProducts(res);
+  let workingHours = [
+    { startTime: '2019-06-07T09:00:00.000-04:00', endTime: '2019-06-07T17:00:00.000-04:00' },
+    { startTime: '2019-06-08T09:00:00.000-04:00', endTime: '2019-06-08T17:00:00.000-04:00' },
+    { startTime: '2019-06-09T09:00:00.000-04:00', endTime: '2019-06-09T17:00:00.000-04:00' },
+  ];
+  let appointments = [
+    { startTime: '2019-06-07T09:00:00.000-04:00', endTime: '2019-06-07T09:30:00.000-04:00' },
+    { startTime: '2019-06-07T10:00:00.000-04:00', endTime: '2019-06-07T10:15:00.000-04:00' },
+    { startTime: '2019-06-07T14:00:00.000-04:00', endTime: '2019-06-07T17:00:00.000-04:00' },
+    { startTime: '2019-06-08T09:00:00.000-04:00', endTime: '2019-06-08T10:00:00.000-04:00' },
+    { startTime: '2019-06-08T12:00:00.000-04:00', endTime: '2019-06-08T14:00:00.000-04:00' },
+    { startTime: '2019-06-09T12:00:00.000-04:00', endTime: '2019-06-09T12:30:00.000-04:00' },
+  ];
 
-export const getProduct = (req, res) => {
-  Product.findOne({ _id: new ObjectId(req.params.id) })
-    .populate('reviews')
-    .then((result) => {
-      res.json(result);
-    })
-    .catch((error) => {
-      console.log(error);
-      res.status(500).json({ error });
-    });
-};
+  workingHours = workingHours.map((workingHour) => {
+    return { startTime: new Date(workingHour.startTime), endTime: new Date(workingHour.endTime) };
+  });
 
-export const searchProducts = (req, res) => {
-  const { searchTerm } = req.query;
-  if (searchTerm === '') {
-    getAllProducts(res);
-  } else {
-    Product.find({ $text: { $search: searchTerm } })
-      .populate('reviews')
-      .then((result) => {
-        res.json(result);
-      })
-      .catch((error) => {
-        res.status(500).json({ error });
-      });
-  }
+  appointments = appointments.map((workingHour) => {
+    return { startTime: new Date(workingHour.startTime), endTime: new Date(workingHour.endTime) };
+  });
+
+  res.send(getAllTimeSlots(workingHours, appointments, slotLength));
 };

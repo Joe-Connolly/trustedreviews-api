@@ -1,6 +1,6 @@
 # API Server for Trusted Reviews
 
-See frontend repo for the main README that containes team details and photos. The README below just contains backend related information:
+See [frontend repo](https://github.com/Joe-Connolly/trustedreviews) for the main README that containes team details and photos. The README below just contains backend related information:
 
 ## Architecture
 
@@ -35,10 +35,10 @@ See frontend repo for the main README that containes team details and photos. Th
 
 ## Authors
 
+* Joe Connolly
 * RJ Yang
 * Soren Thompson
 * Shreyas Agnihotri
-* Joe Connolly
 
 ## Acknowledgments
 * Tim Tregubov for helping make a great starter pack. 
